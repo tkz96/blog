@@ -1,24 +1,35 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Blog
+This repo is dedicated to a blogging website developed on the Ruby on Rails framework.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby on Rails
+- PostgreSQL
 
-* System dependencies
+## Setup
 
-* Configuration
+Clone the repo locally on your machine by typing the following commands in your terminal/Command Prompt
 
-* Database creation
+- `git clone https://github.com/tkz96/blog.git`
+- `cd blog`
 
-* Database initialization
+## Authors
 
-* How to run the test suite
+👤 **Talha Zuberi**
 
-* Services (job queues, cache servers, search engines, etc.)
+- GitHub: [@tkz96](https://github.com/tkz96)
+- Twitter: [@tkz96](https://twitter.com/tkz96)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/talha-zuberi)
 
-* Deployment instructions
 
-* ...
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
