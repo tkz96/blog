@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   describe 'GET posts#index' do
     before do
-      get '/users/1/posts' , params: { id: 1 }
-
+      get '/users/1/posts', params: { id: 1 }
     end
     it 'should respond with status 200' do
       expect(response).to have_http_status(200)
