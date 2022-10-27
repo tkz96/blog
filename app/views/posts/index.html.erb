@@ -1,5 +1,23 @@
+<div class="author-info">
+  <img class="black-border" src=<%= @user.photo %> alt="user_image">
+  <div class="black-border name-and-posts">
+    <h2><%= @user.name %></h2>
+    <p>Number of posts: <%= @user.posts_counter %></p>
+  </div>
+</div>
+
 <div>
-  <h1>
-    This is the index for posts.
-  </h1>
+  <p>Posts: </p>
+  <% @posts.each do |post| %>
+    <div class="bottom-margin black-border">
+      <h3><%= post.title %></h3>
+      <br>
+      <%= post.text %>
+      <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+      <% post.five_most_recent_comments.each do |comment| %>
+        <p><%= @user.name %>: <%= comment.text %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <button class="black-border">Pagination</button>
 </div>
