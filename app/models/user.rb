@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :posts
+  has_many :posts, foreign_key: 'author_id'
   has_many :likes
   has_many :comments
 
@@ -10,5 +10,7 @@ class User < ApplicationRecord
   def recent_posts
     # posts.last(3)
     posts.order(created_at: :desc).limit(3)
+    # Post.order(created_at: :desc).limit(3)
+    # Post.find_by_sql("SELECT posts.* FROM posts WHERE posts.author_id = ":2" LIMIT 3")
   end
 end
