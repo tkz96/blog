@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   has_many :likes
   has_many :comments
 
@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   end
 
   # A method which returns the 5 most recent comments for a given post.
-  def recent_comments
+  def five_most_recent_comments
     comments.last(5)
   end
 end

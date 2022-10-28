@@ -1,5 +1,10 @@
-<div>
-  <h1>
-    This is the show for posts
-  </h1>
+<div class="black-border">
+  <h2><%= @posts.title %> by <%= @user.name %></h2>
+  <p class="right-align">Comments: <%= @posts.comments_counter %>, Likes: <%= @posts.likes_counter %></p>
+  <%= @posts.text %></div>
+<br>
+<div class="black-border">
+  <% @posts.comments.each do |comment| %>
+    <p><%= @user.name %>: <%= comment.text %></p>
+  <% end %>
 </div>
