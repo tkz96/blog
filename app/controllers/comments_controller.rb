@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = 'Comment not created'
     end
-    redirect_to "/users"
+    redirect_to '/users'
   end
 
   private

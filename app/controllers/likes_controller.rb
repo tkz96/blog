@@ -9,6 +9,6 @@ class LikesController < ApplicationController
     else
       flash[:error] = 'Like not created'
     end
-    redirect_to "/users"
+    redirect_to '/users'
   end
 end
