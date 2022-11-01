@@ -1,0 +1,17 @@
+<h1>Create a Post</h1>
+<%= form_with model: @post, url: user_posts_path, method: :post, local: true, scope: :new_post do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, class: "black-border bottom-margin" %>
+  </div>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :text, class: "black-border" %>
+  </div>
+
+  <button class="black-border">
+  <%= form.submit %>
+  </button>
+<% end %>
+
