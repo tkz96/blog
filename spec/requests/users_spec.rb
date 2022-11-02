@@ -12,7 +12,7 @@ RSpec.describe 'Users', type: :request do
       expect(response).to render_template(:index)
     end
     it 'includes correct placeholder text in respond body' do
-      expect(response.body).to include('This is the index for users.')
+      expect(response.body).to include('Number of posts:')
     end
   end
 
