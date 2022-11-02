@@ -1,10 +1,10 @@
-<div class="black-border">
-  <h2><%= @posts.title %> by <%= @user.name %></h2>
-  <p class="right-align">Comments: <%= @posts.comments_counter %>, Likes: <%= @posts.likes_counter %></p>
-  <%= @posts.text %></div>
-<br>
-<div class="black-border">
-  <% @posts.comments.each do |comment| %>
-    <p><%= @user.name %>: <%= comment.text %></p>
-  <% end %>
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<div>
+  <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <%= link_to "Back to posts", posts_path %>
+
+  <%= button_to "Destroy this post", @post, method: :delete %>
 </div>

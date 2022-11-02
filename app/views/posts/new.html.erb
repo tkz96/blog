@@ -1,17 +1,9 @@
-<h1>Create a Post</h1>
-<%= form_with model: @post, url: user_posts_path, method: :post, local: true, scope: :new_post do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title, class: "black-border bottom-margin" %>
-  </div>
+<h1>New post</h1>
 
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :text, class: "black-border" %>
-  </div>
+<%= render "form", post: @post %>
 
-  <button class="black-border">
-  <%= form.submit %>
-  </button>
-<% end %>
+<br>
 
+<div>
+  <%= link_to "Back to posts", posts_path %>
+</div>
