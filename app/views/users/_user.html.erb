@@ -1,21 +1,14 @@
 <div id="<%= dom_id user %>">
+
+  <%= image_tag(user.photo) %>
+
   <p>
-    <strong>Name:</strong>
+    <strong>Name: </strong>
     <%= user.name %>
   </p>
 
   <p>
-    <strong>Photo:</strong>
-    <%= user.photo %>
-  </p>
-
-  <p>
-    <strong>Bio:</strong>
-    <%= user.bio %>
-  </p>
-
-  <p>
-    <strong>Posts counter:</strong>
+    <strong>Posts: </strong>
     <%= user.posts_counter %>
   </p>
 

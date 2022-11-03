@@ -1,27 +1,26 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-
-  # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
   end
 
-  # GET /posts/1 or /posts/1.json
   def show
+    @user = User.find(params[:user_id])
+    @post = @user.posts.includes(comments: [:user]).find(params[:id])
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
   end
 
-  # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.comments_counter = 0
+    @post.likes_counter = 0
 
     respond_to do |format|
       if @post.save
@@ -49,6 +48,8 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
+
+    user.posts_counter -= 1
     @post.destroy
 
     respond_to do |format|
@@ -65,6 +66,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :text, :comments_counter, :likes_counter, :user_id)
+      params.require(:post).permit(:title, :text, :user_id)
     end
 end
