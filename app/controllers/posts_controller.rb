@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    # @post.build_user
   end
 
   def edit
@@ -19,12 +20,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.comments_counter = 0
-    @post.likes_counter = 0
+    # @post = @user.posts.new(post_params)
+    @post.user_id = params[:user_id]
+    @post.comments_count = 0
+    @post.likes_count = 0
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
+        format.html { redirect_to user_posts_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,7 +40,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+        format.html { redirect_to user_post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,7 +52,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
 
-    user.posts_counter -= 1
+    user.posts_count -= 1
     @post.destroy
 
     respond_to do |format|

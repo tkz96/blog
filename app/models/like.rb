@@ -4,9 +4,9 @@ class Like < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :post_id }
 
-  after_save :update_counter
+  after_save :update_count
 
-  def update_counter
-    post.increment!(:likes_counter)
+  def update_count
+    post.increment!(:likes_count)
   end
 end
