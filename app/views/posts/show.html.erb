@@ -3,7 +3,11 @@
 <%= render @post %>
 
 <div>
-  <%= link_to "Edit this post", edit_user_post_path(@post) %> |
   <%= link_to "Back to posts", user_posts_path %>
-
 </div>
+
+<% @user.return_recent_posts.each do |post|%>
+    <%= link_to user_post_path(@user.id, post.id) do %>
+      <%= render post %>
+    <%  end %>
+ <% end %>
