@@ -1,12 +1,10 @@
-<section>
-<h1>Users Page</h1>
-  <% @user.each do |user| %>
-    <div class="author-info">
-      <img class="black-border" src=<%= user.photo %> alt="user_image">
-      <div class="black-border name-and-posts">
-        <h2><%= user.name %></h2>
-        <p>Number of posts: <%= user.posts_counter %></p>
-      </div>
-    </div>
+<p style="color: green"><%= notice %></p>
+<h1>Users</h1>
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
   <% end %>
-</section>
+</div>
