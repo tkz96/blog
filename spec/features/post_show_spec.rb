@@ -6,8 +6,9 @@ RSpec.describe 'renders post index Page', type: :feature do
                             bio: 'Teacher from UK.', posts_count: 0)
     @subject2 = User.create(name: 'Alex', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from USA.',
                             posts_count: 0)
-    @post = Post.create(user: @subject1, title: 'nick', text: 'nick start new role as web developer', comments_count: 0, likes_count: 0)
-    @comment = Comment.create(text:'Hello', user_id: @subject2.id, post_id: @post.id)
+    @post = Post.create(user: @subject1, title: 'nick', text: 'nick start new role as web developer',
+                        comments_count: 0, likes_count: 0)
+    @comment = Comment.create(text: 'Hello', user_id: @subject2.id, post_id: @post.id)
 
     visit "/users/#{@subject1.id}/posts/#{@post.id}"
   end

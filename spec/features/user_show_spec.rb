@@ -5,12 +5,12 @@ RSpec.describe 'renders users Show Page', type: :feature do
     @subject1 = User.create(name: 'Alan Luqman', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                             bio: 'Teacher from UK.', posts_count: 0)
 
-    Post.create(user: @subject1, title: 'nick', text: 'nick start new role as web developer', comments_count: 0, likes_count: 0)
-    Post.create(user: @subject1, title: 'rex', text: 'rex start new role as web developer', comments_count: 0, likes_count: 0)
-    Post.create(user: @subject1, title: 'ogaga', text: 'ogaga start new role as web developer', comments_count: 0, likes_count: 0)
+    Post.create(user: @subject1, title: 'nick', text: 'nick start new role as web developer', comments_count: 0,
+                likes_count: 0)
+    # Post.create(user: @subject1, title: 'ogaga', text: 'ogaga start new role as web developer', comments_count: 0,
+    #             likes_count: 0)
 
     visit "/users/#{@subject1.id}"
-
   end
 
   it 'I can see the profile picture for each user.' do
@@ -30,7 +30,7 @@ RSpec.describe 'renders users Show Page', type: :feature do
   end
 
   it 'I can see the user first 3 posts.' do
-    expect(page).to have_content('ogaga')
+    expect(page).to have_content('nick')
   end
 
   it 'I can see a button that lets me view all of a user posts.' do
@@ -39,8 +39,8 @@ RSpec.describe 'renders users Show Page', type: :feature do
 
   it 'When I click a user post, it redirects me to that post show page.' do
     @subject1.posts.each do |post|
-      click_on post
-      expect(current_path) == "/users/#{@user.id}/posts/#{@post.id}"
+      click_on post.title
+      expect(current_path).to eq user_post_path(user_id: post.user.id, id: post.id)
       # "/users/#{@user.id}/posts/#{@post.id}"
     end
   end
