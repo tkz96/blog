@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
 RSpec.describe 'users index', type: :feature do
   before(:example) do
     @subject1 = User.create(name: 'Alan Luqman', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',

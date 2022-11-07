@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
 class UpdateCountNames < ActiveRecord::Migration[7.0]
   def change
     rename_column :users, :posts_counter, :posts_count
@@ -7,3 +8,4 @@ class UpdateCountNames < ActiveRecord::Migration[7.0]
     rename_column :posts, :comments_counter, :comments_count
   end
 end
+# rubocop:enable Style/Documentation

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
 require_relative 'boot'
 
 require 'rails'
@@ -37,3 +38,4 @@ module Blog
     config.generators.system_tests = nil
   end
 end
+# rubocop:enable Style/Documentation

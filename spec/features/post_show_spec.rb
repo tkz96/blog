@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'renders post index Page', type: :feature do
   before(:example) do
     @subject1 = User.create(name: 'Alan Luqman', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
@@ -43,3 +43,4 @@ RSpec.describe 'renders post index Page', type: :feature do
     expect(page).to have_content('Hello')
   end
 end
+# rubocop:enable Metrics/BlockLength
