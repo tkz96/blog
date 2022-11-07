@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The User Controller
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
@@ -19,11 +20,10 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit; end
 
-  # POST /users or /users.json
+  # rubocop:disable Metrics/MethodLength
   def create
     @user = User.new(user_params)
     @user.posts_count = 0
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # PATCH/PUT /users/1 or /users/1.json
   def update

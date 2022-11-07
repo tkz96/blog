@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The Posts Controller
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   def index
@@ -19,6 +20,9 @@ class PostsController < ApplicationController
 
   def edit; end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
+
   def create
     @post = Post.new(post_params)
     # @post = @user.posts.new(post_params)
@@ -36,6 +40,8 @@ class PostsController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
