@@ -4,7 +4,8 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 RSpec.describe 'renders users Show Page', type: :feature do
   before(:example) do
-    @subject1 = User.create(name: 'Alan Luqman', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+    @subject1 = User.create(name: 'Alan Luqman',
+                            photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                             bio: 'Teacher from UK.', posts_count: 0)
 
     Post.create(user: @subject1, title: 'nick', text: 'nick start new role as web developer', comments_count: 0,
