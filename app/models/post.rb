@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Post model
 class Post < ApplicationRecord
   belongs_to :user, counter_cache: true, optional: true
   has_many :comments, dependent: :destroy, foreign_key: :post_id

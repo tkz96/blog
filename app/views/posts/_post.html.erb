@@ -1,6 +1,7 @@
 <div id="<%= dom_id post %>">
   <div class='black-border'>
-    <h2><%= post.title %></h2>
+    <h2><%= post.title %> by <%= post.user.name %></h2>
+
     <div class="right-align">
     <p>
       <strong>Comments: </strong><%= post.comments_count %>
@@ -16,7 +17,7 @@
     <h3>Comments</h3>
   <% post.comments.each do |comment|%>
   <p>
-    <strong><%= post.user.name %></strong>
+    <strong><%= comment.user.name %></strong>
     <%= comment.text%>
   </p>
   <% end %>

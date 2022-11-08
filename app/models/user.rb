@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# The user class
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy, foreign_key: :user_id
   accepts_nested_attributes_for :posts
