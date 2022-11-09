@@ -2,6 +2,16 @@ body * {
     padding: 4px;
 }
 
+.self-center {
+    margin: 0 20vw;
+    text-align: center;
+}
+
+input {
+    border: #000000 solid 2px;
+    min-width: 10rem;
+}
+
 .right-align {
     text-align: right;
 }
