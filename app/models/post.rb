@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
+# Post model
 class Post < ApplicationRecord
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
-  has_many :likes
-  has_many :comments
+  belongs_to :user, counter_cache: true, optional: true
+  has_many :comments, dependent: :destroy, foreign_key: :post_id
+  has_many :likes, dependent: :destroy, foreign_key: :post_id
 
-  validates :title, presence: true
-  validates :title, length: { maximum: 250 }
-  validates :comments_counter, comparison: { greater_than_or_equal_to: 0 }
-  validates :likes_counter, comparison: { greater_than_or_equal_to: 0 }
+  validates :title, presence: true, length: { maximum: 250 }
+  validates :comments_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :likes_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  # A method that updates the posts counter for a user.
-  def update_posts_counter
-    user.increment!(:posts_counter)
+  after_save :update_count
+
+  def update_count
+    user.increment!(:posts_count)
   end
 
-  # A method which returns the 5 most recent comments for a given post.
-  def five_most_recent_comments
-    comments.last(5)
+  def recent_comments(post)
+    post.comments.order(created_at: :desc).limit(5)
   end
 end

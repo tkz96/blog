@@ -1,9 +1,13 @@
-class Comment < ApplicationRecord
-  belongs_to :author, class_name: 'User'
-  belongs_to :post
+# frozen_string_literal: true
 
-  # A method that updates the comments counter for a post.
-  def update_comments_counter
-    post.increment!(:comments_counter)
+# Comment model
+class Comment < ApplicationRecord
+  belongs_to :user, optional: true
+  belongs_to :post, counter_cache: true, optional: true
+
+  after_save :update_count
+
+  def update_count
+    post.increment!(:comments_count)
   end
 end
